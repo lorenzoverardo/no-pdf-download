@@ -20,7 +20,13 @@ const BINARY_MIME_TYPES = [
 const HEADER_CONTENT_DISPOSITION = "Content-Disposition";
 const HEADER_CONTENT_TYPE = "Content-Type";
 
+const allowedDomains = [".googleusercontent.com"];
+
 function handleHeaders(url, headers) {
+    if (isAllowedWebsite(url)) {
+        return;
+    }
+
     // Get content type header
     let ct = getHeader(headers, HEADER_CONTENT_TYPE);
     if (ct.i == -1) {
@@ -33,6 +39,10 @@ function handleHeaders(url, headers) {
         changeHeaders(headers, ct, cd);
         return headers;
     }
+}
+
+function isAllowedWebsite(url) {
+    return allowedDomains.some((domain) => url.toLowerCase().includes(domain));
 }
 
 function isPdf(url, type, disposition) {
