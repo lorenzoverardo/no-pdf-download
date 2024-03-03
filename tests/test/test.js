@@ -188,6 +188,16 @@ describe("Handle Headers", () => {
             ["Content-Type", "application/pdf"],
         ]
     );
+    
+    testHandleHeaders(
+        "Google User Content",
+        "http://example.googleusercontent.com/test.pdf",
+        [
+            ["Content-Disposition", "attachment"],
+            ["Content-Type", "application/pdf"],
+        ],
+        false
+    );
 });
 
 /* Helper Functions */
