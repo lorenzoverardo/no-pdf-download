@@ -20,7 +20,7 @@ const BINARY_MIME_TYPES = [
 const HEADER_CONTENT_DISPOSITION = "Content-Disposition";
 const HEADER_CONTENT_TYPE = "Content-Type";
 
-const allowedDomains = [".googleusercontent.com"];
+const allowedDomains = ["googleusercontent.com", "usercontent.google.com"];
 
 function handleHeaders(url, headers) {
     if (isAllowedWebsite(url)) {
